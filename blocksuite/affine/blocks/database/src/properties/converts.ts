@@ -8,6 +8,11 @@ import { propertyModelPresets } from '@blocksuite/data-view/property-pure-preset
 import { clamp } from '@blocksuite/global/gfx';
 import { nanoid, Text } from '@blocksuite/store';
 
+import {
+  emailPropertyModelConfig,
+  phonePropertyModelConfig,
+} from './contact/define.js';
+import { linkPropertyModelConfig } from './link/define.js';
 import { richTextPropertyModelConfig } from './rich-text/define.js';
 
 export const databasePropertyConverts = [
@@ -173,4 +178,31 @@ export const databasePropertyConverts = [
       };
     }
   ),
+  // text, link, email and phone keep their value when switching between them
+  ...[emailPropertyModelConfig, phonePropertyModelConfig].flatMap(contact => [
+    createPropertyConvert(
+      richTextPropertyModelConfig,
+      contact,
+      (_property, cells) => ({
+        property: {},
+        cells: cells.map(v => v?.toString().trim() ?? ''),
+      })
+    ),
+    createPropertyConvert(
+      contact,
+      richTextPropertyModelConfig,
+      (_property, cells) => ({
+        property: {},
+        cells: cells.map(v => new Text(v ?? '').yText),
+      })
+    ),
+    createPropertyConvert(linkPropertyModelConfig, contact, (_p, cells) => ({
+      property: {},
+      cells: cells.map(v => v ?? ''),
+    })),
+    createPropertyConvert(contact, linkPropertyModelConfig, (_p, cells) => ({
+      property: {},
+      cells: cells.map(v => v ?? ''),
+    })),
+  ]),
 ];

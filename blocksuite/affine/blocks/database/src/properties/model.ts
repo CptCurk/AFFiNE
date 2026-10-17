@@ -1,6 +1,10 @@
 import type { PropertyModel } from '@blocksuite/data-view';
 import { propertyModelPresets } from '@blocksuite/data-view/property-pure-presets';
 
+import {
+  emailPropertyModelConfig,
+  phonePropertyModelConfig,
+} from './contact/define';
 import { linkPropertyModelConfig } from './link/define';
 import { richTextPropertyModelConfig } from './rich-text/define';
 import { titlePropertyModelConfig } from './title/define';
@@ -14,6 +18,8 @@ export const databaseBlockModels = Object.fromEntries(
     propertyModelPresets.selectPropertyModelConfig,
     propertyModelPresets.multiSelectPropertyModelConfig,
     linkPropertyModelConfig,
+    emailPropertyModelConfig,
+    phonePropertyModelConfig,
     richTextPropertyModelConfig,
     titlePropertyModelConfig,
   ].map(v => [v.type, v as PropertyModel])

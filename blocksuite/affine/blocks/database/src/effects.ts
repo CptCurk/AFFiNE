@@ -4,6 +4,7 @@ import { DatabaseBlockComponent } from './database-block';
 import { DatabaseDndPreviewBlockComponent } from './database-dnd-preview-block';
 import { BlockRenderer } from './detail-panel/block-renderer';
 import { NoteRenderer } from './detail-panel/note-renderer';
+import { EmailCell, PhoneCell } from './properties/contact/cell-renderer';
 import { CreatedTimeCell } from './properties/created-time/cell-renderer';
 import { LinkCell } from './properties/link/cell-renderer';
 import { RichTextCell } from './properties/rich-text/cell-renderer';
@@ -14,6 +15,8 @@ export function effects() {
   customElements.define('affine-database-title', DatabaseTitle);
   customElements.define('data-view-header-area-icon', IconCell);
   customElements.define('affine-database-link-cell', LinkCell);
+  customElements.define('affine-database-email-cell', EmailCell);
+  customElements.define('affine-database-phone-cell', PhoneCell);
   customElements.define('data-view-header-area-text', HeaderAreaTextCell);
   customElements.define('affine-database-rich-text-cell', RichTextCell);
   customElements.define('affine-database-created-time-cell', CreatedTimeCell);

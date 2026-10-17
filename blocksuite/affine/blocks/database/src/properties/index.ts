@@ -1,5 +1,9 @@
 import { propertyPresets } from '@blocksuite/data-view/property-presets';
 
+import {
+  emailColumnConfig,
+  phoneColumnConfig,
+} from './contact/cell-renderer.js';
 import { createdTimeColumnConfig } from './created-time/cell-renderer.js';
 import { linkColumnConfig } from './link/cell-renderer.js';
 import { richTextColumnConfig } from './rich-text/cell-renderer.js';
@@ -23,6 +27,8 @@ export const databaseBlockProperties = {
   selectColumnConfig: selectPropertyConfig,
   imageColumnConfig: propertyPresets.imagePropertyConfig,
   linkColumnConfig,
+  emailColumnConfig,
+  phoneColumnConfig,
   richTextColumnConfig,
   titleColumnConfig,
   createdTimeColumnConfig,
