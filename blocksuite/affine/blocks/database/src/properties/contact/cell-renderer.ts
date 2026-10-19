@@ -54,7 +54,11 @@ abstract class ContactCell extends BaseCellRenderer<string, string> {
     const input = this._input.value;
     if (input) {
       input.focus();
-      input.setSelectionRange(input.value.length, input.value.length);
+      try {
+        input.setSelectionRange(input.value.length, input.value.length);
+      } catch {
+        // email inputs do not support selection: the caret stays where it is
+      }
     }
   }
 
